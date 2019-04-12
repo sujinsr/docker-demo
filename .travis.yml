@@ -1,5 +1,11 @@
 language: java
 
-sudo: false
-
 script: mvn clean verify
+
+services:
+  - docker
+
+after_success:
+  - docker build -t "sujinsr/dockerdemo:latest" .
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push sujinsr/dockerdemo
