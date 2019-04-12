@@ -2,5 +2,4 @@ language: java
 
 sudo: true
 
-script:
-  - chmod +x ./gradlew build connectedCheck
+script: mvn clean verify
